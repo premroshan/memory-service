@@ -21,7 +21,10 @@ async def main(path: str, n: int) -> None:
         await asyncio.sleep(0.2)  # let the slow requests reach the server first
         health = await timed_get(client, "/health")
         slowest = max(await asyncio.gather(*slow))
-    print(f"{path:<11} n={n:<3} /health took {health * 1000:7.0f} ms   slowest {path} took {slowest:5.2f} s")
+        print(
+            f"{path:<11} n={n:<3} /health took {health * 1000:7.0f} ms   "
+            f"slowest {path} took {slowest:5.2f} s"
+        )
 
 
 if __name__ == "__main__":
